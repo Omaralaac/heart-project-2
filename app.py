@@ -28,16 +28,17 @@ def predict():
     prop =  round(proba_of_disease * 100, 2)
     #prop["Risk rate"] = str(prop["Risk rate"]) + "%" 
 
-
     output = {}
     if int(pred) == 0:
-        pred_pat = 'No Heart Disease'
-        
+        pred_pat = 'No Heart Disease'  
     else:
         pred_pat = 'Has Heart Disease'
         
-    output = pred_pat , prop
+    output["prediction"] = pred_pat
+    output["Risk Rate"] = prop
 
     return jsonify(output)
+
+
 
 app.run(host='0.0.0.0', port=8081)
